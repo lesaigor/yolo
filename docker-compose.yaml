@@ -1,27 +1,49 @@
 version: '3'
 
 services:
-  backend:
-    image: yolo-backend-app
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
-    ports:
-      - "5000:5000"
-    environment:
-      - MONGO_URI=mongodb+srv://<username>:<password>@<cluster>/<dbname>
-
-  client:
+  yolo-client:
     image: yolo-client-app
-    build:
-      context: ./client
-      dockerfile: Dockerfile
+    restart: always
+    links:
+      - yolo-backend
     ports:
       - "3000:3000"
-    environment:
-      - REACT_APP_API_URL=http://backend:5000
+    stdin_open: true
+    networks:
+      - yolo-client-backend-bridge-network
+
+  yolo-backend:
+    image: yolo-backend-app
+    restart: always
     depends_on:
-      - backend
+      - yolo-mongodb
+    ports:
+      - "5000:5000"
+    stdin_open: true
+    volumes:
+      - mongodb:/var/lib/mongodb
+    environment:
+      - MONGODB_URI=mongodb://yolo-mongodb:27017
+    networks:
+      - yolo-backend-mongodb-bridge-network
+      - yolo-client-backend-bridge-network
+
+  yolo-mongodb:
+    image:  mongodb/mongodb-community-server
+    restart: always
+    volumes:
+      - mongodb:/var/lib/mongodb
+    ports:
+      - "27017:27017"
+    stdin_open: true
+    networks:
+      - yolo-backend-mongodb-bridge-network
+
+networks:
+  yolo-backend-mongodb-bridge-network:
+    driver: bridge
+  yolo-client-backend-bridge-network:
+    driver: bridge
 
 volumes:
-  db-data:
+  mongodb:
