@@ -1,8 +1,8 @@
 version: '3'
 
 services:
-  yolo-client:
-    image: yolo-client-app
+  yolo-client-app:
+    build: ./client
     restart: always
     links:
       - yolo-backend
@@ -11,9 +11,9 @@ services:
     stdin_open: true
     networks:
       - yolo-client-backend-bridge-network
-
-  yolo-backend:
-    image: yolo-backend-app
+ 
+  yolo-backend-app:
+    build: ./backend
     restart: always
     depends_on:
       - yolo-mongodb
@@ -27,15 +27,15 @@ services:
     networks:
       - yolo-backend-mongodb-bridge-network
       - yolo-client-backend-bridge-network
-
+ 
   yolo-mongodb:
-    image:  mongodb/mongodb-community-server
+    build: .
     restart: always
+    ports:
+      - "27018:27017"
+    stdin_open: true
     volumes:
       - mongodb:/var/lib/mongodb
-    ports:
-      - "27017:27017"
-    stdin_open: true
     networks:
       - yolo-backend-mongodb-bridge-network
 
