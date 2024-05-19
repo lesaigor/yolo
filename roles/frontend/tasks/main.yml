@@ -1,0 +1,18 @@
+---
+- name: Install Packages
+  apt:
+    name: nodejs
+    state: present
+
+- name: Install npm
+  apt:
+    name: npm
+    state: present
+
+- name: Install create-react-app globally
+  npm:
+    name: create-react-app
+    global: yes
+
+- name: Create React app
+  command: create-react-app cd {{ app_dir }}/client
