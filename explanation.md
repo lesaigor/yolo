@@ -62,4 +62,24 @@ This helps in identifying different versions of images and containers easily.
 ## Screenshot of Deployed Image on DockerHub:
 A screenshot of the deployed image on DockerHub, clearly showing the version of the image, is provided for reference and documentation purposes.
 
-##
+# Stage One: Ansible Instrumentation Explanation
+
+This document provides an explanation of the setup and configuration implemented in Stage One of the project.
+
+## Vagrant Configuration
+
+We use Vagrant to create a virtual machine with an Ubuntu server for our development environment. The `Vagrantfile` contains the configuration settings for the virtual machine.
+
+## Ansible Configuration
+
+Ansible is used for server configuration and application deployment. The `ansible.cfg` file specifies Ansible configuration settings, and the `playbook.yaml` file defines the tasks to be executed.
+
+## Ansible Roles
+
+We organize our tasks into roles located in the `roles` directory. Each role represents a specific component of our system, such as installing packages or configuring services.
+
+## Variables
+
+Variable files in the `vars` directory are used to store variables that can be referenced in our Ansible playbook. This allows for greater flexibility and customization of our configuration.
+
+For more detailed information on each component and its configuration, refer to the respective files in the project directory.

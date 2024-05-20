@@ -21,3 +21,33 @@ Make sure that you have the following installed:
  `npm start`
 
  ### Go ahead a nd add a product (note that the price field only takes a numeric input)
+
+ # Stage One: Ansible Instrumentation
+
+This stage implements Ansible for server configuration and application deployment. It sets up a development environment using Vagrant with an Ubuntu server and provisions the necessary resources for running a web application.
+
+## Project Structure
+
+── ansible.cfg
+├── playbook.yaml
+├── roles
+│ └── (Ansible roles)
+└── vars
+└── (Variable files)
+
+
+- `ansible.cfg`: Ansible configuration file.
+- `playbook.yaml`: Main Ansible playbook.
+- `roles`: Directory containing Ansible roles for configuring different components.
+- `vars`: Directory containing variable files used in the playbook.
+
+## Running the Playbook
+
+1. Make sure you have Ansible and Vagrant installed on your system.
+2. Navigate to the project directory.
+3. Run `vagrant up` to spin up the virtual machine.
+4. Run `ansible-playbook playbook.yaml` to execute the Ansible playbook.
+
+## Explanation
+
+For a detailed explanation of the project setup and configuration, refer to the `explanation.md` file.
