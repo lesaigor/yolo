@@ -76,10 +76,9 @@ Ansible is used for server configuration and application deployment. The `ansibl
 
 ## Ansible Roles
 
-We organize our tasks into roles located in the `roles` directory. Each role represents a specific component of our system, such as installing packages or configuring services.
+The tasks are organized into roles located in the `roles` directory. Each role represents a specific component of our system, such as installing packages or configuring services.
 
 ## Variables
 
 Variable files in the `vars` directory are used to store variables that can be referenced in our Ansible playbook. This allows for greater flexibility and customization of our configuration.
 
-For more detailed information on each component and its configuration, refer to the respective files in the project directory.
