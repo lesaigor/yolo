@@ -1,0 +1,31 @@
+- hosts: all
+  become: true
+  tasks:
+
+    - name: test connectivity
+      ping:
+
+    - name: Update server
+      apt:
+        update_cache: true
+
+    - name: Install nginx
+      apt:
+        name: nginx
+        state: present
+
+    - name: Copy folder to remote server
+      copy:
+        src: ./yolo
+        dest: /var/www/yolo
+        owner: www-data
+        group: www-data
+        mode: "0644"
+      notify:
+        - Restart nginx
+
+  handlers:
+    - name: Restart nginx
+      service:
+        name: nginx
+        state: restarted
