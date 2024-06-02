@@ -1,0 +1,14 @@
+# k8s-manifests/frontend-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: client-service
+  namespace: yolo
+spec:
+  selector:
+    app: yolo-client-app
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
+  type: NodePort
