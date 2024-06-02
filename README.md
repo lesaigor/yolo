@@ -48,6 +48,69 @@ This stage implements Ansible for server configuration and application deploymen
 3. Run `vagrant up` to spin up the virtual machine.
 4. Run `ansible-playbook playbook.yaml` to execute the Ansible playbook.
 
+## Stage Two: Kubernetes Deployment
+
+This stage deploys the application on a Kubernetes cluster. Initially, it can be tested on Minikube for local testing and then transitioned to AWS EKS for production deployment.
+
+## Project Structure
+
+── k8s-manifests
+├── backend-deployment.yaml
+├── backend-service.yaml
+├── client-deployment.yaml
+├── client-service.yaml
+├── mongo-statefulset.yaml
+├── mongo-service.yaml
+└── namespace.yaml
+
+### Minikube Setup (Local Testing)
+
+1. Start Minikube:
+    ```sh
+    minikube start
+    ```
+2. Apply the Kubernetes manifests:
+    ```sh
+    kubectl apply -f k8s-manifests/namespace.yaml
+    kubectl apply -f k8s-manifests/mongo-statefulset.yaml
+    kubectl apply -f k8s-manifests/mongo-service.yaml
+    kubectl apply -f k8s-manifests/backend-deployment.yaml
+    kubectl apply -f k8s-manifests/backend-service.yaml
+    kubectl apply -f k8s-manifests/client-deployment.yaml
+    kubectl apply -f k8s-manifests/client-service.yaml
+    ```
+3. Verify the deployment:
+    ```sh
+    kubectl get pods -n yolo
+    ```
+4. Access the client service:
+    ```sh
+    minikube service client-service -n yolo
+    ```
+
+### AWS EKS Setup (Production)
+
+1. Set up EKS cluster using eksctl:
+    ```sh
+    eksctl create cluster --name yolo-cluster --region <your-region> --nodegroup-name standard-workers --node-type t3.medium --nodes 3 --nodes-min 1 --nodes-max 4 --managed
+    ```
+2. Configure kubectl to use your EKS cluster:
+    ```sh
+    aws eks --region <your-region> update-kubeconfig --name yolo-cluster
+    ```
+3. Apply the same manifests to EKS:
+    ```sh
+    kubectl apply -f k8s-manifests/namespace.yaml
+    kubectl apply -f k8s-manifests/mongo-statefulset.yaml
+    kubectl apply -f k8s-manifests/mongo-service.yaml
+    kubectl apply -f k8s-manifests/backend-deployment.yaml
+    kubectl apply -f k8s-manifests/backend-service.yaml
+    kubectl apply -f k8s-manifests/frontend-deployment.yaml
+    kubectl apply -f k8s-manifests/frontend-service.yaml
+    ```
 ## Explanation
 
 For a detailed explanation of the project setup and configuration, refer to the `explanation.md` file.
+
+##Author
+Lesaigor Pride
