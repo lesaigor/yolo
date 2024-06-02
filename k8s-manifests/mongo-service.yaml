@@ -1,0 +1,12 @@
+# k8s-manifests/mongo-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongo-service
+  namespace: yolo
+spec:
+  ports:
+    - port: 27017
+  clusterIP: None
+  selector:
+    app: mongodb
