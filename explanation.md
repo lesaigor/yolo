@@ -82,3 +82,45 @@ The tasks are organized into roles located in the `roles` directory. Each role r
 
 Variable files in the `vars` directory are used to store variables that can be referenced in our Ansible playbook. This allows for greater flexibility and customization of our configuration.
 
+# Stage Two: Kubernetes Instrumentation Explanation
+This document provides an explanation of the setup and configuration implemented in Stage two of the project.
+
+## Minikube 
+Ensure Minikube is installed and configured properly on your local machine.
+
+## kubectl
+Ensure kubectl is installed and configured to interact with your Minikube cluster.
+
+## namespace
+Defines a separate namespace to isolate resources.
+
+## Steps to Deploy on Kubernetes
+1. Start Minikube 
+   Start Minikube to spin the pod and clusters:
+
+2. Apply Kubernetes Manifests
+   Apply the Kubernetes manifests to create the necessary resources:
+3. Port Conflicts
+  Ensure no other services are using the ports required by Minikube. You can kill processes using the conflicting ports:
+ 
+4.Container Runtime Issues
+Ensure Docker or the container runtime is running:
+
+ 5. Deploying code on Cloud cluster
+Install and Configure Google Cloud SDK:
+Ensure you have the Google Cloud SDK installed and configured. Authenticate with your Google:
+
+
+6.Cloud account and set the project
+Create a GKE Cluster:
+Create a GKE cluster to host your application:
+Get Cluster Credentials:
+Get the credentials for your GKE cluster to interact with it using kubectl:
+
+6.Deploy Application on GKE
+Apply the Kubernetes manifests to create the necessary resources on GKE:
+
+7. Accessing the Application
+
+Once deployed, you can access your application using the external IP address of the services. This can be found in the README.MD file with external IP URL:
+
