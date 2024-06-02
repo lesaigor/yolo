@@ -8,15 +8,15 @@ spec:
   replicas: 2
   selector:
     matchLabels:
-      app: yolo-backend
+      app: yolo-backend-app
   template:
     metadata:
       labels:
-        app: yolo-backend
+        app: yolo-backend-app
     spec:
       containers:
-      - name: byolo-backend
-        image: lesaigor/yolo-backend:latest
+      - name: yolo-backend
+        image: lesaigor/yolo-backend-app:latest
         ports:
         - containerPort: 5000
         env:

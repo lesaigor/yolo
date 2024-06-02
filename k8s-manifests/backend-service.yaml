@@ -6,7 +6,7 @@ metadata:
   namespace: yolo
 spec:
   selector:
-    app: yolo-backend
+    app: yolo-backend-app
   ports:
     - protocol: TCP
       port: 5000
