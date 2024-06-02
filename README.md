@@ -105,8 +105,8 @@ This stage deploys the application on a Kubernetes cluster. Initially, it can be
     kubectl apply -f k8s-manifests/mongo-service.yaml
     kubectl apply -f k8s-manifests/backend-deployment.yaml
     kubectl apply -f k8s-manifests/backend-service.yaml
-    kubectl apply -f k8s-manifests/frontend-deployment.yaml
-    kubectl apply -f k8s-manifests/frontend-service.yaml
+    kubectl apply -f k8s-manifests/client-deployment.yaml
+    kubectl apply -f k8s-manifests/client-service.yaml
     ```
 ## Explanation
 
