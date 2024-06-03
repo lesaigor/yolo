@@ -108,8 +108,12 @@ This stage deploys the application on a Kubernetes cluster. Initially, it can be
     kubectl apply -f k8s-manifests/client-deployment.yaml
     kubectl apply -f k8s-manifests/client-service.yaml
     ```
-## Explanation
 
+## Accessing the app external
+You can access the app using this link:
+
+
+## Explanation
 For a detailed explanation of the project setup and configuration, refer to the `explanation.md` file.
 
 ##Author
