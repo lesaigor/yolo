@@ -110,7 +110,7 @@ This stage deploys the application on a Kubernetes cluster. Initially, it can be
     ```
 
 ## Accessing the app external
-You can access the app using this link:
+You can access the app using this link: https://13.56.77.16:3000/
 
 
 ## Explanation
